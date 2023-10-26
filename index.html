@@ -1,0 +1,65 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+<body>
+    <hr>
+    <input id="input1">
+    <label>Operator:</label>
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="x">x</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input id="input2">
+    <button type="button" onclick="hitung()">Hitung</button>
+    <label id="Hasil">144</label>
+
+    <script>
+        function hitung() {
+            let input1 = document.getElementById('input1').value;
+            let input2 = document.getElementById('input2').value;
+            let operator = document.getElementById('operator').value;
+            let Hasil;
+
+            input1 = parseFloat(input1);
+            input2 = parseFloat(input2);
+
+            if (!isNaN(input1) && !isNaN(input2)) {
+                switch (operator) {
+                    case '+':
+                        Hasil = input1 + input2;
+                        break;
+                    case '-':
+                        Hasil = input1 - input2;
+                        break;
+                    case 'x':
+                        Hasil = input1 * input2;
+                        break;
+                    case '/':
+                        if (input2 === 0) {
+                            Hasil = "Tidak dapat membagi oleh nol";
+                        } else {
+                            Hasil = input1 / input2;
+                        }
+                        break;
+                    case '%':
+                        Hasil = input1 % input2;
+                        break;
+                    default:
+                        Hasil = "Operator tidak valid";
+                }
+            } else {
+                Hasil = "Nilai input invalid";
+            }
+
+            document.getElementById("Hasil").innerHTML = Hasil;
+            console.log(typeof input1, typeof input2, Hasil);
+        }
+    </script>
+
+
+</body></html>
